@@ -1,21 +1,39 @@
-import {useState} from 'react';
-// import {DigitContext} from './Contexts';
+/*
+class Cell {
+  digit: undefined | number;
+  notes: Array<boolean>;
+  
+  constructor() {
+    this.digit = undefined;
+    this.notes = Array(9);
+  }
 
-interface cell {
-  key: string,
-  digit: number,
-  clickFunc: ()=>void,
+  mark(num : number, mark : boolean) {
+    if (num < 1 || num > 9) {
+      return;
+    }
+
+    this.notes[num-1] = mark;
+  }
+}
+*/
+
+type cell = {
+  digit: number;
+  notes: Array<boolean>;
+  onClick: ()=>{};
 }
 
-function Cell(props : cell) {
-  let [fun,setFun] = useState(0);
-
+const Cell = (
+    {digit = 0, 
+    notes = Array(9).fill(false),
+    onClick = ()=>{},
+    }) => {
   return (
-      <div className="cell">
-      here's a cell {props.digit}
-      <button onClick={props.clickFunc}> click me </button>
-      </div>
+      <p>
+        <button onClick={onClick}> {digit} hi </button>
+      </p>
   );
-}
+}  
 
 export default Cell;
